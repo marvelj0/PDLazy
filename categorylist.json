@@ -1,0 +1,76 @@
+[
+  {
+    "id": "649a5d5a5f61e6540ab4c8a2",
+    "name": "Kelas TK"
+  },
+  {
+    "id": "649a5d605f61e6540ab4c8d8",
+    "name": "Kelas SD",
+    "subCategories": [
+      {
+        "id": "649b81c6749244e77daa470f",
+        "name": "Kelas I"
+      },
+      {
+        "id": "64a2277bdacbdde7aeb2b7ae",
+        "name": "Kelas II"
+      },
+      {
+        "id": "64a22782dacbdde7aeb2b7c6",
+        "name": "Kelas III"
+      },
+      {
+        "id": "64a22788dacbdde7aeb2b7de",
+        "name": "Kelas IV"
+      },
+      {
+        "id": "64a2278edacbdde7aeb2b7f6",
+        "name": "Kelas V"
+      },
+      {
+        "id": "64a22794dacbdde7aeb2b80e",
+        "name": "Kelas VI"
+      }
+    ]
+  },
+  {
+    "id": "649a5d665f61e6540ab4c8f0",
+    "name": "Kelas SMP",
+    "subCategories": [
+      {
+        "id": "64a2279cdacbdde7aeb2b826",
+        "name": "Kelas VII"
+      },
+      {
+        "id": "64a227a5dacbdde7aeb2b83e",
+        "name": "Kelas VIII"
+      },
+      {
+        "id": "64a227addacbdde7aeb2b8a9",
+        "name": "Kelas IX"
+      }
+    ]
+  },
+  {
+    "id": "649a5d6c5f61e6540ab4c908",
+    "name": "Kelas SLTA",
+    "subCategories": [
+      {
+        "id": "64a227b5dacbdde7aeb2b8c1",
+        "name": "Kelas X"
+      },
+      {
+        "id": "64a227bddacbdde7aeb2b8dd",
+        "name": "Kelas XI"
+      },
+      {
+        "id": "64a227c8dacbdde7aeb2b8f9",
+        "name": "Kelas XII"
+      }
+    ]
+  },
+  {
+    "id": "64c86be02bc59a1d7a50995e",
+    "name": "Persiapan UTBK-SNBT"
+  }
+]
