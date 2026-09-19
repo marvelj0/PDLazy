@@ -31,7 +31,7 @@ git clone https://github.com/marvelj0/PDLazy.git
 cd PDLazy
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
-pip install requests selenium
+pip install requests selenium python-dotenv
 ```
 
 ### Linux / macOS
@@ -41,7 +41,7 @@ git clone https://github.com/marvelj0/PDLazy.git
 cd PDLazy
 python3 -m venv .venv
 source .venv/bin/activate
-pip install requests selenium
+pip install requests selenium python-dotenv
 ```
 
 ### UV
@@ -50,22 +50,14 @@ pip install requests selenium
 git clone https://github.com/marvelj0/PDLazy.git
 cd PDLazy
 uv venv
-uv pip install selenium
+uv pip install selenium requests python-dotenv
 uv run pdl.py
 ```
 ## Configuration
 
-Edit `pdl.py`:
+Copy `.env.example` to `.env` and fill in the required values.
 
-```python
-SESSION_ID = "..."
-CSRFTOKEN = "..."
-NEXT_AUTH_SESSION_TOKEN = "..."
-CATEGORY_ID = "..."
-SUBCATEGORY_ID = "..."
-MAX_CONCURRENT_COURSES = 5
-```
-
+Set `BROWSER=firefox` in `.env` to use Firefox. Selenium Manager locates or downloads the required driver automatically. Use `BROWSER=chromium` for the Chromium-based options.
 Get the category IDs from `categorylist.json`.
 
 Get the required cookies from your logged-in browser's Developer Tools → Application/Storage → Cookies.
@@ -95,10 +87,10 @@ Start with `1–2` workers and increase gradually. More workers require more RAM
 **Missing modules:**
 
 ```bash
-pip install requests selenium
+pip install requests selenium python-dotenv
 ```
 
-**Browser won't start:** Make sure Chrome/Chromium/Brave/ is installed and update Selenium:
+**Browser won't start:** Make sure the selected browser is installed and update Selenium:
 
 ```bash
 pip install --upgrade selenium

@@ -2,27 +2,42 @@ import os
 import time
 import requests
 import threading  # Added for thread-safe file writing
-import logging
+from dotenv import load_dotenv
 from concurrent.futures import ThreadPoolExecutor
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-BRAVE_CANDIDATE_PATHS = [
-    r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe",
-    r"C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe",
-    os.path.join(os.environ.get("LOCALAPPDATA", ""), "BraveSoftware", "Brave-Browser", "Application", "brave.exe"),
-]
-# ---------------------
-# CONFIGURATION (NEED TO BE FILLED WITH VALID VALUES)
-# ---------------------
-SESSION_ID = "GET IT FROM BROWSER COOKIES AFTER LOGIN"
-CSRFTOKEN = "GET IT FROM BROWSER COOKIES AFTER LOGIN"
-NEXT_AUTH_SESSION_TOKEN = "GET IT FROM BROWSER COOKIES AFTER LOGIN"
-CATEGORY_ID = "Get it from categorylist.json for filtering courses by category"
-SUBCATEGORY_ID = "Get it from categorylist.json for filtering courses by subcategory"
-MAX_CONCURRENT_COURSES = 5 # How many windows will run in parallel (adjust based on your system's capabilities)
+
+# env config
+load_dotenv()
+
+REQUIRED_ENV_VARS = (
+    "SESSION_ID",
+    "CSRFTOKEN",
+    "NEXT_AUTH_SESSION_TOKEN",
+    "CATEGORY_ID",
+    "SUBCATEGORY_ID",
+    "MAX_CONCURRENT_COURSES",
+)
+
+missing = [key for key in REQUIRED_ENV_VARS if not os.getenv(key)]
+if missing:
+    raise SystemExit(
+        "Missing env vars: " + ", ".join(missing) + ". Copy .env.example to .env and fill them in."
+    )
+
+try:
+    MAX_CONCURRENT_COURSES = int(os.getenv("MAX_CONCURRENT_COURSES"))
+except ValueError:
+    raise SystemExit("MAX_CONCURRENT_COURSES must be an integer.")
+
+SESSION_ID = os.getenv("SESSION_ID")
+CSRFTOKEN = os.getenv("CSRFTOKEN")
+NEXT_AUTH_SESSION_TOKEN = os.getenv("NEXT_AUTH_SESSION_TOKEN")
+CATEGORY_ID = os.getenv("CATEGORY_ID")
+SUBCATEGORY_ID = os.getenv("SUBCATEGORY_ID")
 
 # File to track completed courses
 COMPLETED_COURSES_FILE = "completed_courses.txt"
