@@ -45,18 +45,24 @@ INPUT_REQUIRED_LINKS_FILE = "input_required_links.txt"
 file_lock = threading.Lock()
 
 def setup_driver():
-    options = webdriver.ChromeOptions()
+    browser = os.getenv("BROWSER", "chrome").lower()
+    if browser == "firefox":
+        options = webdriver.FirefoxOptions()
+    elif browser == "chromium":
+        options = webdriver.ChromeOptions()
+    else:
+        raise SystemExit("BROWSER must be one of: chrome, brave, firefox")
+
+    browser_binary = os.getenv("BROWSER_BINARY")
+    if browser_binary:
+        options.binary_location = os.path.expanduser(browser_binary)
+
     options.add_argument("--start-maximized")
     options.page_load_strategy = "eager"
     # options.add_argument("--headless=new")
-    options.add_argument("--disable-gpu")
-
-    brave_path = next((p for p in BRAVE_CANDIDATE_PATHS if p and os.path.exists(p)), None)
-    if brave_path:
-        options.binary_location = brave_path
-        print(f"[+] Using Brave browser binary: {brave_path}")
-
-    driver = webdriver.Chrome(options=options)
+    if browser != "firefox":
+        options.add_argument("--disable-gpu")
+    driver = webdriver.Firefox(options=options) if browser == "firefox" else webdriver.Chrome(options=options)
     driver.set_script_timeout(60)
     return driver
 

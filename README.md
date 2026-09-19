@@ -18,8 +18,8 @@ Browser automation for processing courses on the BPK Penabur Digital Learning pl
 ## Requirements
 
 * Python 3.10+
-* Chrome, Chromium, or Brave
-* `requests` and `selenium`
+* Firefox, Chrome, Chromium, or Brave
+* `requests`, `selenium`, and `python-dotenv`
 * Authorized account and active browser session
 
 ## Installation
