@@ -291,7 +291,7 @@ def automate_quiz_component(driver):
         };
         const selectAnswer = (q, choice) => {
             const radio = document.getElementById(`input_${problemBlockId}_${q + 1}_1_choice_${choice}`);
-            if (radio && !radio.checked) {
+            if (radio) {
                 radio.click(); radio.checked = true;
                 radio.dispatchEvent(new Event('change', { bubbles: true }));
             }
