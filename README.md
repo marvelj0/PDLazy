@@ -99,3 +99,4 @@ pip install --upgrade selenium
 **Authentication fails:** Sign in again and replace the expired cookies.
 
 **No courses found:** Check `CATEGORY_ID` and `SUBCATEGORY_ID` in `categorylist.json`.
+.
